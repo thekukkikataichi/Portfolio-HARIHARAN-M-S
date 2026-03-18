@@ -504,18 +504,141 @@
     border: 1px solid rgba(124,58,237,0.15); border-radius: 50%;
   }
 
-  /* mobile basic */
-  @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    #hero { padding: 100px 24px 60px; }
+  /* ===== FULLY RESPONSIVE ===== */
+
+  /* Tablet landscape */
+  @media (max-width: 1100px) {
+    nav { padding: 18px 36px; }
+    #hero { padding: 110px 36px 80px; }
+    .hero-stats { right: 36px; }
+    section { padding: 90px 36px; }
+    .proj-card--featured { grid-column: span 12; }
+    .proj-card--side { grid-column: span 12; }
+    .proj-card--half { grid-column: span 6; }
+    .proj-card--third { grid-column: span 4; }
+  }
+
+  /* Tablet portrait */
+  @media (max-width: 900px) {
     .hero-stats { display: none; }
-    section { padding: 70px 24px; }
-    .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .proj-card--featured, .proj-card--side,
-    .proj-card--half, .proj-card--third { grid-column: span 12; }
-    .ach-grid { grid-template-columns: 1fr; }
-    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    .hero-name { font-size: 60px; letter-spacing: -1px; }
+    .proj-card--half { grid-column: span 6; }
+    .proj-card--third { grid-column: span 6; }
+    .ach-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Mobile — hamburger nav, full single-column layout */
+  @media (max-width: 768px) {
+    body { cursor: auto; }
+    .cursor-dot, .cursor-ring { display: none; }
+
+    /* NAV — hamburger */
+    nav {
+      padding: 14px 20px;
+      background: rgba(8,11,16,0.97);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo { font-size: 16px; }
+    .nav-links { display: none; flex-direction: column; gap: 0; }
+    .nav-links.open {
+      display: flex;
+      position: fixed; top: 54px; left: 0; right: 0;
+      background: rgba(8,11,16,0.98);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0; z-index: 200;
+    }
+    .nav-links.open a {
+      padding: 14px 24px; font-size: 12px; letter-spacing: 2px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links.open a:last-child { border-bottom: none; }
+    .hamburger {
+      display: flex; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* HERO */
+    #hero {
+      padding: 90px 20px 60px;
+      min-height: 100svh;
+    }
+    .hero-name { font-size: clamp(38px, 11vw, 54px); letter-spacing: -1px; }
+    .hero-title { font-size: 18px; }
+    .hero-desc { font-size: 13px; }
+    .hero-chips { gap: 8px; }
+    .chip { font-size: 9px; padding: 5px 10px; }
+    .hero-cta { flex-direction: column; gap: 12px; }
+    .btn-primary, .btn-ghost {
+      display: block; text-align: center;
+      padding: 16px 24px; font-size: 11px;
+    }
+    .float-accent { display: none; }
+    .scroll-hint { left: 20px; bottom: 24px; }
+    .hero-glow { width: 300px; height: 300px; top: -50px; right: -80px; }
+    .hero-glow2 { width: 220px; height: 220px; }
+
+    /* SECTIONS */
+    section { padding: 64px 20px; }
+    .section-title { font-size: clamp(26px, 7vw, 40px); margin-bottom: 40px; }
+
+    /* ABOUT */
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-text p { font-size: 13px; }
+    .skill-bar-wrap { margin-bottom: 14px; }
+
+    /* PROJECTS */
+    .projects-grid { gap: 12px; }
+    .proj-card--featured,
+    .proj-card--side,
+    .proj-card--half,
+    .proj-card--third { grid-column: span 12; }
+    .proj-body { padding: 18px; }
+    .proj-title { font-size: 16px; }
+    .proj-desc { font-size: 12px; }
+    .proj-stack { gap: 4px; }
+    .stack-item { font-size: 8px; padding: 2px 7px; }
+
+    /* TIMELINE */
+    .timeline { padding-left: 24px; }
+    .timeline-dot { left: -30px; }
+    .timeline-company { font-size: 17px; }
+    .timeline-points li { font-size: 12px; }
+
+    /* ACHIEVEMENTS */
+    .ach-grid { grid-template-columns: 1fr; gap: 12px; }
+    .ach-card { padding: 24px; }
+
+    /* CONTACT */
+    .contact-email { font-size: clamp(16px, 5vw, 28px); margin: 16px 0 28px; }
+    .social-links { flex-direction: column; align-items: center; gap: 16px; }
+
+    /* FOOTER */
+    footer {
+      padding: 20px;
+      flex-direction: column; gap: 8px; text-align: center;
+      font-size: 10px;
+    }
+  }
+
+  /* Small phones */
+  @media (max-width: 390px) {
+    #hero { padding: 80px 16px 48px; }
+    section { padding: 52px 16px; }
+    .hero-name { font-size: 36px; }
+    nav { padding: 12px 16px; }
+  }
+
+  /* Tall phones — ensure hero fills screen properly */
+  @media (max-width: 768px) and (min-height: 800px) {
+    #hero { min-height: 100svh; align-items: center; }
   }
 </style>
 </head>
@@ -527,12 +650,15 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">HM.S</a>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about" onclick="closeNav()">About</a>
+    <a href="#projects" onclick="closeNav()">Projects</a>
+    <a href="#experience" onclick="closeNav()">Experience</a>
+    <a href="#contact" onclick="closeNav()">Contact</a>
   </div>
+  <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu" style="display:none;">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -563,7 +689,7 @@
     </div>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="mailto:mhariharan697@gmail.com" class="btn-ghost">Get in Touch</a>
+      <a href="/cdn-cgi/l/email-protection#1c71747d6e75747d6e7d722a252b5c7b717d7570327f7371" class="btn-ghost">Get in Touch</a>
     </div>
   </div>
 
@@ -934,7 +1060,7 @@
 <section id="contact">
   <div class="section-eyebrow" style="justify-content:center;">05 / Contact</div>
   <h2 class="section-title reveal" style="text-align:center;">Let's Build Something</h2>
-  <a href="mailto:mhariharan697@gmail.com" class="contact-email reveal">mhariharan697@gmail.com</a>
+  <a href="/cdn-cgi/l/email-protection#2a47424b5843424b584b441c131d6a4d474b434604494547" class="contact-email reveal"><span class="__cf_email__" data-cfemail="167b7e77647f7e77647778202f2156717b777f7a3875797b">[email&#160;protected]</span></a>
   <div class="social-links reveal">
     <a href="https://github.com/ErenCodeTitan" class="social-link" target="_blank">
       ↗ GitHub
@@ -954,33 +1080,36 @@
   <span>Chennai, India</span>
 </footer>
 
-<script>
-// Custom cursor
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Custom cursor (desktop only)
 const dot = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-function animCursor() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(animCursor);
+
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animCursor() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+
+  document.querySelectorAll('a, button, .proj-card, .ach-card, .chip').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.transform = 'translate(-50%,-50%) scale(1.6)';
+      ring.style.borderColor = 'rgba(0,229,255,0.7)';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.borderColor = 'rgba(0,229,255,0.4)';
+    });
+  });
 }
-animCursor();
 
-document.querySelectorAll('a, button, .proj-card, .ach-card, .chip').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    ring.style.transform = 'translate(-50%,-50%) scale(1.6)';
-    ring.style.borderColor = 'rgba(0,229,255,0.7)';
-  });
-  el.addEventListener('mouseleave', () => {
-    ring.style.transform = 'translate(-50%,-50%) scale(1)';
-    ring.style.borderColor = 'rgba(0,229,255,0.4)';
-  });
-});
-
-// Reveal on scroll
+// ── Reveal on scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -990,7 +1119,7 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Skill bars
+// ── Skill bars
 const barObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1001,6 +1130,37 @@ const barObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.3 });
 document.querySelectorAll('#about').forEach(el => barObserver.observe(el));
+
+// ── Hamburger nav
+function checkHamburger() {
+  const hb = document.getElementById('hamburger');
+  if (!hb) return;
+  if (window.innerWidth <= 768) {
+    hb.style.display = 'flex';
+  } else {
+    hb.style.display = 'none';
+    document.getElementById('navLinks').classList.remove('open');
+    hb.classList.remove('open');
+  }
+}
+checkHamburger();
+window.addEventListener('resize', checkHamburger);
+
+function toggleNav() {
+  const hb = document.getElementById('hamburger');
+  const nav = document.getElementById('navLinks');
+  hb.classList.toggle('open');
+  nav.classList.toggle('open');
+}
+function closeNav() {
+  const hb = document.getElementById('hamburger');
+  const nav = document.getElementById('navLinks');
+  if (hb) hb.classList.remove('open');
+  if (nav) nav.classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('nav')) closeNav();
+});
 </script>
 </body>
 </html>
